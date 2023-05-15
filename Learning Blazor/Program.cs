@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Learning_Blazor.Data;
+using System;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+// Register HttpClient as a singleton
+var httpClient = new HttpClient();
+httpClient.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress);
+builder.Services.AddSingleton(httpClient);
 
 var app = builder.Build();
 
@@ -29,4 +36,3 @@ app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
 app.Run();
-
