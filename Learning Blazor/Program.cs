@@ -11,7 +11,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["BaseAddress"]) });
 
-builder.RootComponents.Add<App>("app");
+builder.RootComponents.Add<Learning_Blazor.Client.App>("app");
 
 builder.Services.AddSingleton<WeatherForecastService>();
 
