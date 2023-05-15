@@ -1,5 +1,6 @@
 ﻿@page "/"
-
+@using System.Net.Http
+@inject HttpClient http
 <PageTitle>Index</PageTitle>
 
 <h1>Hello, world!</h1>
@@ -18,3 +19,19 @@ jijijiiijii
 Nice Gitpod
 
 Again with new Git Name
+
+
+
+
+
+<button @onclick="GetSomething">Get Something</button>
+
+@code {
+    private async Task GetSomething()
+    {
+        var response = await http.PostAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/api/something", null);
+        var content = await response.Content.ReadAsStringAsync();
+        var result = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(content);
+        Console.WriteLine(result["result"]);
+    }
+}
