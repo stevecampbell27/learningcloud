@@ -11,10 +11,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-dotnet add package Microsoft.AspNetCore.Components.WebAssembly
-dotnet add package Microsoft.Extensions.Configuration
-dotnet add package Microsoft.Extensions.DependencyInjection
-dotnet add package Microsoft.Extensions.Hosting
+
 
 
 
