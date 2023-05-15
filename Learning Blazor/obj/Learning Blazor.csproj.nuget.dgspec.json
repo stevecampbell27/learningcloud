@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/stevencampbell/Projects/Learning Blazor/Learning Blazor/Learning Blazor.csproj": {}
+    "/Users/stevencampbell/Documents/GitHub/learningcloud/Learning Blazor/Learning Blazor.csproj": {}
   },
   "projects": {
-    "/Users/stevencampbell/Projects/Learning Blazor/Learning Blazor/Learning Blazor.csproj": {
+    "/Users/stevencampbell/Documents/GitHub/learningcloud/Learning Blazor/Learning Blazor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/stevencampbell/Projects/Learning Blazor/Learning Blazor/Learning Blazor.csproj",
+        "projectUniqueName": "/Users/stevencampbell/Documents/GitHub/learningcloud/Learning Blazor/Learning Blazor.csproj",
         "projectName": "Learning Blazor",
-        "projectPath": "/Users/stevencampbell/Projects/Learning Blazor/Learning Blazor/Learning Blazor.csproj",
+        "projectPath": "/Users/stevencampbell/Documents/GitHub/learningcloud/Learning Blazor/Learning Blazor.csproj",
         "packagesPath": "/Users/stevencampbell/.nuget/packages/",
-        "outputPath": "/Users/stevencampbell/Projects/Learning Blazor/Learning Blazor/obj/",
+        "outputPath": "/Users/stevencampbell/Documents/GitHub/learningcloud/Learning Blazor/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/stevencampbell/.nuget/NuGet/NuGet.Config"
@@ -21,7 +21,8 @@
         ],
         "sources": {
           "/usr/local/share/dotnet/library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/stevencampbell27/_packaging/stevencampbell27/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -38,6 +39,12 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

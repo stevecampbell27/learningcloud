@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "j0fC3FWPuN5m3xEBCGJXVDTKZbNy0syz3XjXWOg3tqyh2rTEEx4SJxwvIgDrnc5Js5/bQz/3dDTHPKXdZRi91A==",
+  "dgSpecHash": "oOd30p+t1PPhM0V0Td9uayYkwL1cHZG6ChhSTu3pBg+j3gmMPtlk9esA8Z7QVD7FHWyjhQo4Tn9ppNj4Bj5Tgw==",
   "success": true,
-  "projectFilePath": "/Users/stevencampbell/Projects/Learning Blazor/Learning Blazor/Learning Blazor.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/stevencampbell/Documents/GitHub/learningcloud/Learning Blazor/Learning Blazor.csproj",
+  "expectedPackageFiles": [
+    "/Users/stevencampbell/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
