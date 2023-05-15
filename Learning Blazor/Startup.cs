@@ -16,7 +16,7 @@ namespace Learning_Blazor.Client
 
         public async Task ConfigureAsync(WebAssemblyHostBuilder builder)
         {
-            builder.RootComponents.Add<App>("app");
+            builder.RootComponents.Add<Learning_Blazor.App>("app");
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["BaseAddress"]) });
             await builder.Build().RunAsync();
         }
