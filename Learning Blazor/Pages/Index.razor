@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using System.Net.Http
+@inject HttpClient http
 
 <PageTitle>Index</PageTitle>
 
@@ -13,5 +14,15 @@ HELLO!!!
 
 1:02
 
+<button @onclick="GetSomething">Get Something</button>
 
+@code {
+    private async Task GetSomething()
+    {
+        var response = await http.PostAsync("https://your-python-app-url/api/something", null);
+        var content = await response.Content.ReadAsStringAsync();
+        var result = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(content);
+        Console.WriteLine(result["result"]);
+    }
+}
 
