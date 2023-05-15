@@ -19,7 +19,7 @@ Welcome to your new app.
 
     private async Task GetSomething()
     {
-        var response = await HttpClient.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app//api/something");
+        var response = await HttpClient.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/api/something");
         if (response.IsSuccessStatusCode)
         {
             result = await response.Content.ReadAsStringAsync();
