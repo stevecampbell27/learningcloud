@@ -20,5 +20,18 @@ namespace Learning_Blazor.Client
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["BaseAddress"]) });
             await builder.Build().RunAsync();
         }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapFallbackToFile("index.html");
+            });
+        }
     }
 }
