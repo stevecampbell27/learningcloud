@@ -8,15 +8,16 @@ namespace MyBlazorWasmApp.Client
 {
     public class Startup
     {
-        public async Task ConfigureServices(WebAssemblyHostBuilder builder)
+        public void ConfigureServices(IServiceCollection services)
         {
-            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            // Other services
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
         }
 
-        public void Configure(WebAssemblyApplicationBuilder app)
+        public async Task ConfigureAsync(WebAssemblyHostBuilder builder)
         {
-            app.AddComponent<App>("app");
+            builder.RootComponents.Add<App>("app");
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            await builder.Build().RunAsync();
         }
     }
 }
