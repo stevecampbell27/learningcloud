@@ -12,6 +12,8 @@ RUN dotnet add package Microsoft.AspNetCore.Components.WebAssembly
 RUN dotnet add package Microsoft.Extensions.Configuration
 RUN dotnet add package Microsoft.Extensions.DependencyInjection
 RUN dotnet add package Microsoft.Extensions.Hosting
+RUN dotnet add package Microsoft.AspNetCore.WebUtilities
+
 
 # Build the application.
 RUN dotnet build
