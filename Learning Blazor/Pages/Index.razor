@@ -14,17 +14,4 @@ HELLO!!!
 1:02
 
 
-@inject HttpClient http
-
-<button @onclick="GetSomething">Get Something</button>
-
-@code {
-    private async Task GetSomething()
-    {
-        var response = await http.PostAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/api/something", null);
-        var content = await response.Content.ReadAsStringAsync();
-        var result = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(content);
-        Console.WriteLine(result["result"]);
-    }
-}
 
