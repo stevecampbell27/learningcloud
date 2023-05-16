@@ -15,8 +15,10 @@ namespace Learning_Blazor.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Logging.SetMinimumLevel(LogLevel.Debug);
             builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
 
             await builder.Build().RunAsync();
         }
