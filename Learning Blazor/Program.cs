@@ -1,8 +1,8 @@
-﻿using Learning_Blazor.Client.Services;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Threading.Tasks;
+﻿@using Learning_Blazor.Client.Services;
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+@using Microsoft.Extensions.DependencyInjection;
+@using System;
+@using System.Threading.Tasks;
 
 namespace Learning_Blazor.Client
 {
