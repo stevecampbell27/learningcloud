@@ -9,14 +9,15 @@
 @code {
     private string RandomNumber = "";
 
-    private async Task GenerateRandomNumber()
-    {
-        var client = new HttpClient();
-        var response = await client.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/");
-        var json = await response.Content.ReadAsStringAsync();
+private async Task GenerateRandomNumber()
+{
+    var client = new HttpClient();
+    var response = await client.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/");
+    var json = await response.Content.ReadAsStringAsync();
 
-        // Deserialize the JSON response and extract the random_number property
-        var data = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
-        RandomNumber = data["random_number"].ToString();
-    }
+    // Deserialize the JSON response and extract the random_number property
+    using var doc = JsonDocument.Parse(json);
+    RandomNumber = doc.RootElement.GetProperty("random_number").ToString();
+}
+
 }
