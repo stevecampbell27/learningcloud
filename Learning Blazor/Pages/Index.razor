@@ -1,32 +1,22 @@
 ﻿@page "/"
-@using System.Net.Http
-@using Learning_Blazor
-@inject HttpClient HttpClient
 
+<h1>Generate Random Number</h1>
 
-<h1>Hello, world!</h1>
+<button @onclick="GenerateRandomNumber">Generate</button>
 
-Welcome to your new app.
-
-<button @onclick="GetSomething">Get Something</button>
-@if (result != null)
-{
-    <p>@result</p>
-}
+<p>@RandomNumber</p>
 
 @code {
-    private string result;
+    private string RandomNumber = "";
 
-    private async Task GetSomething()
+    private async Task GenerateRandomNumber()
     {
-        var response = await HttpClient.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/api/something");
-        if (response.IsSuccessStatusCode)
-        {
-            result = await response.Content.ReadAsStringAsync();
-        }
-        else
-        {
-            result = $"Error: {response.StatusCode}";
-        }
+        var client = new HttpClient();
+        var response = await client.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/");
+        var json = await response.Content.ReadAsStringAsync();
+
+        // Deserialize the JSON response and extract the random_number property
+        var data = JsonConvert.DeserializeObject<Dictionary<string, int>>(json);
+        RandomNumber = data["random_number"].ToString();
     }
 }
