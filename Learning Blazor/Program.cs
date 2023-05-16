@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Learning_Blazor.Client
@@ -14,12 +15,8 @@ namespace Learning_Blazor.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Logging.AddConsole(); // Change LoggerFactory to LoggingBuilderExtensions
-
-            builder.Services.AddHttpClient("randomNumberAPI", client =>
-            {
-                client.BaseAddress = new Uri(builder.Configuration["RandomNumberAPIURL"]);
-            });
+            builder.Logging.SetMinimumLevel(LogLevel.Debug);
+            builder.Services.AddSingleton(new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             await builder.Build().RunAsync();
         }
