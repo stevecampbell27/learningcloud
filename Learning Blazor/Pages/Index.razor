@@ -1,4 +1,9 @@
 ﻿@using System.Text.Json
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+@using Microsoft.Extensions.DependencyInjection;
+@using System;
+@using System.Net.Http;
+@using System.Threading.Tasks;
 
 
 @page "/"
@@ -14,14 +19,15 @@
 
 private async Task GenerateRandomNumber()
 {
-    var client = new HttpClient();
-    var response = await client.GetAsync("https://unicodex-xwodoxs6eq-uc.a.run.app/");
-    var json = await response.Content.ReadAsStringAsync();
-
-    // Deserialize the JSON response and extract the random_number property
-    var document = JsonDocument.Parse(json);
-    RandomNumber = document.RootElement.GetProperty("random_number").GetString();
-
+    var httpClient = _httpClientFactory.CreateClient("randomNumberAPI");
+    var response = await httpClient.GetAsync("/");
+    if (response.IsSuccessStatusCode)
+    {
+        using var content = await response.Content.ReadAsStreamAsync();
+        using var document = await JsonDocument.ParseAsync(content);
+        RandomNumber = document.RootElement.GetProperty("random_number").GetString();
+    }
 }
+
 
 }
