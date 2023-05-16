@@ -1,4 +1,7 @@
-﻿@page "/"
+﻿@using System.Text.Json
+
+
+@page "/"
 
 <h1>Generate Random Number</h1>
 
@@ -16,8 +19,9 @@ private async Task GenerateRandomNumber()
     var json = await response.Content.ReadAsStringAsync();
 
     // Deserialize the JSON response and extract the random_number property
-    using var doc = JsonDocument.Parse(json);
-    RandomNumber = doc.RootElement.GetProperty("random_number").ToString();
+    var document = JsonDocument.Parse(json);
+    RandomNumber = document.RootElement.GetProperty("random_number").GetString();
+
 }
 
 }
