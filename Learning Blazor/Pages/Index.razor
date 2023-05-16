@@ -1,50 +1,13 @@
 ﻿@page "/"
+@layout MainLayout
 
-@using Learning_Blazor.Shared
-@using System.Net.Http.Json
-
-@inject HttpClient HttpClient
-@inject IHttpClientFactory HttpClientFactory
-
-<h1>Hello, world!</h1>
-
-<p>Random number: @RandomNumber</p>
-
-@code {
-    private int RandomNumber { get; set; }
-
-    protected override async Task OnInitializedAsync()
-    {
-        // Use the injected HttpClient instance to make requests
-        var response = await HttpClient.GetAsync("randomnumber");
-        RandomNumber = await response.Content.ReadFromJsonAsync<int>();
-
-        // Use the injected IHttpClientFactory to create a named HttpClient instance
-        var namedClient = HttpClientFactory.CreateClient("randomNumberAPI");
-        var namedResponse = await namedClient.GetAsync("");
-        var namedRandomNumber = await namedResponse.Content.ReadAsStringAsync();
-    }
-}
-
-@code {
-    // ...
-
-    private bool HasError { get; set; }
-
-    private async Task MakeRequests()
-    {
-        try
-        {
-            // ...
-        }
-        catch (Exception ex)
-        {
-            HasError = true;
-        }
-    }
-}
-
-@if (HasError)
-{
-    <p>There was an error while making the request.</p>
-}
+<div class="container">
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found>
+            <RouteView />
+        </Found>
+        <NotFound>
+            <h1>Page not found</h1>
+        </NotFound>
+    </Router>
+</div>
