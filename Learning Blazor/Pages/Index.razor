@@ -3,8 +3,8 @@
 @using Learning_Blazor.Shared
 @using System.Net.Http.Json
 
-@inject HttpClient _httpClient
-@inject IHttpClientFactory _httpClientFactory
+@inject HttpClient HttpClient
+@inject IHttpClientFactory HttpClientFactory
 
 <h1>Hello, world!</h1>
 
@@ -16,12 +16,35 @@
     protected override async Task OnInitializedAsync()
     {
         // Use the injected HttpClient instance to make requests
-        var response = await _httpClient.GetAsync("randomnumber");
+        var response = await HttpClient.GetAsync("randomnumber");
         RandomNumber = await response.Content.ReadFromJsonAsync<int>();
 
         // Use the injected IHttpClientFactory to create a named HttpClient instance
-        var namedClient = _httpClientFactory.CreateClient("randomNumberAPI");
+        var namedClient = HttpClientFactory.CreateClient("randomNumberAPI");
         var namedResponse = await namedClient.GetAsync("");
         var namedRandomNumber = await namedResponse.Content.ReadAsStringAsync();
     }
+}
+
+@code {
+    // ...
+
+    private bool HasError { get; set; }
+
+    private async Task MakeRequests()
+    {
+        try
+        {
+            // ...
+        }
+        catch (Exception ex)
+        {
+            HasError = true;
+        }
+    }
+}
+
+@if (HasError)
+{
+    <p>There was an error while making the request.</p>
 }
