@@ -14,8 +14,7 @@ namespace Learning_Blazor.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Logging.SetMinimumLevel(LogLevel.Debug);
-            builder.Services.AddSingleton<ILoggerFactory>(new LoggerFactory().AddConsole());
+            builder.Logging.AddConsole(); // Change LoggerFactory to LoggingBuilderExtensions
 
             builder.Services.AddHttpClient("randomNumberAPI", client =>
             {
